@@ -1,0 +1,22 @@
+name: Get list of PR's for discussion
+on: 
+  workflow_dispatch:
+    inputs:
+      milestone:
+        description: Milestone
+        required: true
+
+jobs:
+  list-prs:
+    name: List PR's
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v3
+
+      - working-directory: .github/workflows
+        run: bash get-pr-list.sh > pr-list.txt
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: pr-list
+          path: .github/workflows/pr-list.txt
