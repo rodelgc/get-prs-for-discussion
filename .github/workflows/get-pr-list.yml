@@ -16,6 +16,7 @@ jobs:
       - working-directory: .github/workflows
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MILESTONE: ${{ github.event.inputs.milestone }}
         run: bash get-pr-list.sh > pr-list.txt
 
       - uses: actions/upload-artifact@v3

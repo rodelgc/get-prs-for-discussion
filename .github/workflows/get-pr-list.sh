@@ -5,7 +5,7 @@ echo '| -- | ------- | --------------- | ----- |'
 
 gh api repos/woocommerce/woocommerce/pulls \
     --method GET \
-    -F milestone=6.9.0 \
+    -F milestone=$MILESTONE \
     --paginate \
     --template \
     '{{range .}}| [{{.title}}]({{.url}}) | | | |{{"\n"}}{{end}}'
